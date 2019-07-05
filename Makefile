@@ -1,6 +1,4 @@
 
-
-
 src: misc/inject_examples.js $(wildcard example/src/*) | example/src
 	find "$@" -name "*.tsx" | xargs -t -I {} bash -c 'node $< {} > {}.tmp && cmp --silent {}.tmp {} || mv {}.tmp {}'
 
@@ -16,18 +14,19 @@ gh-pages: example/build
 example/build: dist example/src $(wildcard example/src/*)
 	cd example && yarn run build
 
-.INTERMEDIATE: docs
-docs: src/doc.tsx $(wildcard src/*.ts*) $(wildcard node_modules/typedoc*) | src
+typedoc.js: package.json Makefile
+	jq '{ entryPoint: .name, theme: "markdown" }' package.json > $@
+
+.PHONY: docs
+docs: src/doc.tsx $(wildcard src/*.ts*) $(wildcard node_modules/typedoc*) typedoc.js | src
 	- rm README.md # for some reason it ignores --entrypoint if there's an existing readme...
-	yarn run typedoc --entryPoint "$$(jq -r '.name' package.json)" --theme markdown --out $@
-	cp -r docs/* .
-	rm -r docs
+	yarn run typedoc
 
 README.md: docs
 	# by default, typedoc makes the header of the module a second-level
 	# header and puts it in a quote. i have no explanation for why
 	# but this does fix it.
-	sed -E -i .backup '1s/^> *#(.*)/\1/' README.md
+	sed -E -i .backup '1s/^> *#*(.*)/# \1/' README.md
 	rm $@.backup
 
 src/doc.tsx: templates/pkgdoc_templ.jq pkginfo.json | src

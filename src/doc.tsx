@@ -1,17 +1,17 @@
 /**
- * @module react-observer-hook
+ * @module example
  * @requires prop-types
  * @requires react
  * @requires react-dom
- * @summary Provides react hooks for the DOM observer APIs that facilitate detecting visibility and resizing of DOM elements.
+ * @summary an example description
  * @version 1.0.0
- * @author zemnmez
- * @copyright zemnmez 2019
+ * @author an example author
+ * @copyright an example author 2019
  * @license MIT
  * ## Installation
  * 
  * ```bash
- * yarn add react-observer-hook
+ * yarn add example
  * ```
  * # Abstract
  * This package provides type checked React hooks for the observer APIs. The Observer APIs are efficient, browser supported ways
