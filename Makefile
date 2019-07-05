@@ -6,10 +6,6 @@ example/package.json: example/package.json.merged
 	cp '$<' '$@'
 
 
-src: misc/inject_examples.js $(wildcard example/src/*) | example/src
-	find "$@" -name "*.tsx" | xargs -t -I {} bash -c 'node $< {} > {}.tmp && cmp --silent {}.tmp {} || mv {}.tmp {}'
-
-
 dist: src $(wildcard src/*) tsconfig.json
 	yarn run rollup -c
 
@@ -21,13 +17,10 @@ gh-pages: example/build
 example/build: dist example/src $(wildcard example/src/*) example/package.json
 	cd example && yarn run build
 
-typedoc.json: package.json Makefile
-	jq '{ entryPoint: .name, theme: "markdown" }' package.json > $@
-
 .INTERMEDIATE: docs/README.md
-docs/README.md: src/doc.tsx $(wildcard src/*.ts*) $(wildcard node_modules/typedoc*) typedoc.json | src
+docs/README.md: src/doc.tsx $(wildcard src/*.ts*) $(wildcard node_modules/typedoc*) typedoc.js | src
 	- rm README.md # for some reason it ignores --entrypoint if there's an existing readme...
-	yarn run typedoc --out $(@D)
+	yarn run typedoc --logger console --out $(@D)
 
 README.md: docs/README.md
 	cp $< $@
