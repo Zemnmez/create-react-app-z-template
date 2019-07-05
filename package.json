@@ -18,7 +18,8 @@
     "build": "yarn run make dist README.md",
     "start": "rollup -c -w",
     "deploy": "yarn make gh-pages",
-    "make": "make -j"
+    "make": "make -j",
+    "update-z-app": "git fetch z-app; git merge z-app"
   },
   "dependencies": {},
   "peerDependencies": {
