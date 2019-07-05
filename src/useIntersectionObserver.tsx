@@ -1,5 +1,5 @@
 /**
- * @module react-observer-hook
+ * @module example
  */
 
 /**
@@ -42,7 +42,7 @@ declare global {
   * [react docs: react ref]: https://reactjs.org/docs/refs-and-the-dom.html "React Docs: Refs and the DOM"
   *
   * ```javascript
-  * [[include:example/src/useIntersectionObserver.js]]
+  * [[include:example/src/App.js]]
   *
   * ```
   */

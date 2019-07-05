@@ -1,5 +1,5 @@
 /**
- * @module resize-observer-hook
+ * @module example
  */
 
 import { useObserver } from './useObserver'

@@ -1,5 +1,6 @@
 /**
  * @module example
+ * @preferred
  * @requires prop-types
  * @requires react
  * @requires react-dom

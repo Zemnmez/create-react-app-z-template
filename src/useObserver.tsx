@@ -1,5 +1,5 @@
 /**
- * @module react-observer-hook
+ * @module example
  */
 
 import { Observer, useObserveRef } from './declarations'
