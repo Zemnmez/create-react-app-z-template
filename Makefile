@@ -1,9 +1,14 @@
 .INTERMEDIATE: example/package.json.merged
-example/package.json.merged: package.json Makefile templates/example.package.json.jq
-	jq -r --slurp -f templates/example.package.json.jq 'example/package.json' '$<' > $@
+
+example/package.json.merged: package.json Makefile
+	node scripts/gen_example.json.js \
+		--packagejson package.json  \
+		--examplepackagejson example/package.json \
+		--out $@
 
 example/package.json: example/package.json.merged
 	cp '$<' '$@'
+	cd example && yarn
 
 
 dist: src $(wildcard src/*) tsconfig.json
