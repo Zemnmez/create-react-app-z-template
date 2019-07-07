@@ -1,6 +1,6 @@
 .INTERMEDIATE: example/package.json.merged
-example/package.json.merged: package.json Makefile
-	jq -r --slurp '[.[0],{ name: "\(.[1].name)-example"}]|add' 'example/package.json' '$<' > $@
+example/package.json.merged: package.json Makefile templates/example.package.json.jq
+	jq -r --slurp -f templates/example.package.json.jq 'example/package.json' '$<' > $@
 
 example/package.json: example/package.json.merged
 	cp '$<' '$@'
