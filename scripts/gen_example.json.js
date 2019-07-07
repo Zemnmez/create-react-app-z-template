@@ -61,8 +61,9 @@ const Do = async () => {
 
   // filter out any existing link: dependency
   exPkg.dependencies = Object.entries(exPkg.dependencies)
-    .filter(([k, v]) => /^link:/.test(v))
+    .filter(([k, v]) => !/^link:/.test(v))
     .reduce((a, [k, v]) => { a[k] = v; return a }, {});
+
 
   exPkg.dependencies = {
     [pkg.name]: "link:..",
