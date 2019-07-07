@@ -17,9 +17,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "node-jq": "^1.9.0"
-  },
+  "devDependencies": {},
   "browserslist": {
     "production": [
       ">0.2%",

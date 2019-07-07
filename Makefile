@@ -31,11 +31,11 @@ README.md: docs/README.md
 	cp $< $@
 
 src/doc.tsx: templates/pkgdoc_templ.jq pkginfo.json | src
-	jq -r -f $^ > $@
+	npx jq -r -f $^ > $@
 
 .INTERMEDIATE: pkginfo.json
 pkginfo.json: example/src/example.js DESC.md
-	jq '[.,                                           \
+	npx jq '[.,                                           \
 		{documentation: $$docs},                    \
 		{example: $$example, examplefile: $$examplefile},       \
 		{requirements: [.peerDependencies | keys][0]  }, \
