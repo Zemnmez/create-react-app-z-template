@@ -18,6 +18,7 @@
     "build": "yarn run make dist README.md",
     "start": "rollup -c -w",
     "deploy": "yarn make gh-pages",
+    "build:example": "yarn make example/build",
     "make": "make -j",
     "update-z-app": "git fetch z-app; git merge z-app"
   },
