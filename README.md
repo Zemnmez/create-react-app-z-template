@@ -57,7 +57,7 @@ rather than create subtle run time errors.
 
 Ƭ **DOMRect**: *object*
 
-*Defined in [declarations.tsx:8](https://github.com/Zemnmez/create-react-app-z-template/blob/8c0b9f0/src/declarations.tsx#L8)*
+*Defined in [declarations.tsx:8](https://github.com/Zemnmez/create-react-app-z-template/blob/401847f/src/declarations.tsx#L8)*
 
 A [DOMRect](README.md#domrect) represents the bounding box of an Element.
 
@@ -77,9 +77,21 @@ A [DOMRect](README.md#domrect) represents the bounding box of an Element.
 
 ▸ **Box**(`__namedParameters`: object): *`Element`*
 
-*Defined in [box.tsx:16](https://github.com/Zemnmez/create-react-app-z-template/blob/8c0b9f0/src/box.tsx#L16)*
+*Defined in [box.tsx:16](https://github.com/Zemnmez/create-react-app-z-template/blob/401847f/src/box.tsx#L16)*
 
 A [Box](README.md#const-box) draws a rectangle of given size.
+
+**example**
+```javascript
+import React from 'react';
+import { Box } from 'example';
+
+export const BoxExample = () => <Box {...{
+  height: 100,
+  width: 100,
+}}/>
+
+```
 
 **Parameters:**
 

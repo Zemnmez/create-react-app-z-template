@@ -8,8 +8,8 @@ import { DOMRect } from './declarations';
 /**
  * A [[Box]] draws a rectangle of given size.
  *
- * @example
- * ```
+ * **example**
+ * ```javascript
  * [[include:example/src/Box.js]]
  * ```
  */
